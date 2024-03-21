@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get    "/signup",  to: "users#new"
   get    "/login",   to: "sessions#new"
   get    "/search",  to: "searches#search"
+  get    '/micropost_search', to: 'searches#search'
   post   "/login",   to: "sessions#create"
   delete "/logout",  to: "sessions#destroy"
   resources :users do
@@ -17,5 +18,4 @@ Rails.application.routes.draw do
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :microposts,          only: [:create, :destroy]
   resources :relationships,       only: [:create, :destroy]
-  get '/microposts', to: 'static_pages#home'
 end

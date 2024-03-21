@@ -1,0 +1,21 @@
+<!-- app/views/searches/micro_search.html.erb -->
+
+<h1>Micro Post Search</h1>
+
+<%= form_with(url: micropost_search_path, method: :get, local: true) do |f| %>
+  <%= f.label :keyword, "Search for Microposts" %>
+  <%= f.text_field :keyword, placeholder: "Enter keyword...", class: "form-control" %>
+  <%= f.submit "Search", class: "btn btn-primary" %>
+<% end %>
+
+<!-- 検索結果を表示するコードを追加 -->
+<% if @microposts.present? %>
+  <h2>Search Results:</h2>
+  <ul>
+    <% @microposts.each do |micropost| %>
+      <li><%= micropost.content %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No results found.</p>
+<% end %>
